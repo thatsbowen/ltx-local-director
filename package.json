@@ -1,0 +1,78 @@
+{
+  "name": "ltx-local-director",
+  "version": "1.0.0",
+  "description": "LTX 本地导演台 - 解压即用的本地 AI 视频客户端，画面与声音全部由本机 LTX-2 生成",
+  "main": "./out/main/index.js",
+  "author": "LTX Local Director",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.web.json && tsc --noEmit -p tsconfig.node.json",
+    "build": "npm run typecheck && electron-vite build",
+    "build:win": "npm run build && electron-builder --win --x64",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  },
+  "build": {
+    "appId": "com.ltxdirector.local",
+    "productName": "LTX 本地导演台",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/reward-qr.jpg",
+        "to": "assets/reward-qr.jpg"
+      },
+      {
+        "from": "resources/tray.png",
+        "to": "assets/tray.png"
+      }
+    ],
+    "extraFiles": [
+      {
+        "from": "使用说明.txt",
+        "to": "使用说明.txt"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "LTX-Local-Director-${version}-${arch}.${ext}"
+    },
+    "compression": "maximum",
+    "npmRebuild": false,
+    "asar": true
+  }
+}

@@ -1,0 +1,20 @@
+# 依赖 / dependencies
+node_modules/
+
+# 构建产物 / build output
+out/
+dist/
+release/
+
+# 运行时数据（设置、素材、成片、日志、引擎数据）/ runtime data
+data/
+
+# 测试与临时产物 / test & temp artifacts
+.qa/
+scripts/
+*.log
+*.tsbuildinfo
+
+# 环境变量 / env
+.env
+.env.*
